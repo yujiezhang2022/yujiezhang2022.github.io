@@ -13,22 +13,28 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2023/07/10/hello-world/"/>
+    <link rel="canonical" href="http://example.com/2023/07/11/linux常用命令/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Welcome to Hexo ! This is your very first post. Check documentation  for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting  or you can ask me on GitHub . Q">
+        <meta name="description" content="查看linux版本：cat &#x2F;proc&#x2F;version 下载命令 wget firewall指令打开端口：firewall-cmd –permanent –add-port&#x3D;端口号&#x2F;协议关闭端口：firewall-cmd –permanent –remove-port&#x3D;端口号&#x2F;协议重新载入，才能生效：firewall-cmd –reloa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2023/07/10/hello-world/index.html">
+<meta property="og:title" content="Linux常用命令">
+<meta property="og:url" content="http://example.com/2023/07/11/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Yujie&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo ! This is your very first post. Check documentation  for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting  or you can ask me on GitHub . Q">
+<meta property="og:description" content="查看linux版本：cat &#x2F;proc&#x2F;version 下载命令 wget firewall指令打开端口：firewall-cmd –permanent –add-port&#x3D;端口号&#x2F;协议关闭端口：firewall-cmd –permanent –remove-port&#x3D;端口号&#x2F;协议重新载入，才能生效：firewall-cmd –reloa">
 <meta property="og:locale">
-<meta property="article:published_time" content="2023-07-10T07:41:49.446Z">
-<meta property="article:modified_time" content="2023-07-10T07:41:49.446Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/c88b4770258e46c3a8604421746e2dae.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/8dd651d94ecf4a97ad900967d287425f.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/24bd3036e66644a79ce003ba35112d5d.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/64b96c0147b24e17b21db1c5cc6c2f31.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/64a8e7dff30649cb984d31d6a6a4079a.png#pic_center">
+<meta property="article:published_time" content="2023-07-11T09:02:26.407Z">
+<meta property="article:modified_time" content="2023-07-11T09:05:57.224Z">
 <meta property="article:author" content="Yujie Zhang">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/c88b4770258e46c3a8604421746e2dae.png#pic_center">
     
     
     <!--- Icon Part-->
@@ -40,7 +46,7 @@
     
     <title>
         
-            Hello World -
+            Linux常用命令 -
         
         Yujie&#39;s Blog
     </title>
@@ -202,7 +208,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">Hello World</h1>
+                    <h1 class="article-title-regular">Linux常用命令</h1>
                 </div>
             
                 
@@ -224,15 +230,15 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-07-10 15:41:49</span>
-        <span class="mobile">2023-07-10 15:41</span>
+        <span class="desktop">2023-07-11 17:02:26</span>
+        <span class="mobile">2023-07-11 17:02</span>
         <span class="hover-info">撰寫</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-07-10 15:41:49</span>
-            <span class="mobile">2023-07-10 15:41</span>
+            <span class="desktop">2023-07-11 17:05:57</span>
+            <span class="mobile">2023-07-11 17:05</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -256,19 +262,58 @@
             
 
             <div class="article-content markdown-body">
-                <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+                <h1 id="查看linux版本：cat-x2F-proc-x2F-version"><a href="#查看linux版本：cat-x2F-proc-x2F-version" class="headerlink" title="查看linux版本：cat &#x2F;proc&#x2F;version"></a>查看linux版本：cat &#x2F;proc&#x2F;version</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/c88b4770258e46c3a8604421746e2dae.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h1 id="下载命令-wget"><a href="#下载命令-wget" class="headerlink" title="下载命令 wget"></a>下载命令 wget</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/8dd651d94ecf4a97ad900967d287425f.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h1 id="firewall指令"><a href="#firewall指令" class="headerlink" title="firewall指令"></a>firewall指令</h1><p>打开端口：firewall-cmd –permanent –add-port&#x3D;端口号&#x2F;协议<br>关闭端口：firewall-cmd –permanent –remove-port&#x3D;端口号&#x2F;协议<br>重新载入，才能生效：firewall-cmd –reload<br>查询端口是否开放：firewall-cmd –query-port&#x3D;端口&#x2F;协议<br>查询已经开放的端口号：firewall-cmd –zone&#x3D;public –list-ports</p>
+<h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql:"></a>Mysql:</h1><p>允许远程ip访问<br>update user set host&#x3D;’%’ where user &#x3D;’root’;<br>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’%’WITH GRANT OPTION;<br>flush privileges;</p>
+<h1 id="Docker安装："><a href="#Docker安装：" class="headerlink" title="Docker安装："></a>Docker安装：</h1><p>添加依赖库yum install -y yum-utils device-mapper-persistent-data lvm2<br>添加Docker源<br>yum-config-manager –add-repo <a class="link"   target="_blank" rel="noopener" href="https://download.docker.com/linux/centos/docker-ce.repo" >https://download.docker.com/linux/centos/docker-ce.repo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/24bd3036e66644a79ce003ba35112d5d.png#pic_center"
+                      alt="在这里插入图片描述"
+                >yum-config-manager –add-repo <a class="link"   target="_blank" rel="noopener" href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo" >http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/64b96c0147b24e17b21db1c5cc6c2f31.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<p>安装docker以及docker-cli<br>yum install docker-ce-18.09.0 docker-ce-cli-18.09.0 containerd.io<br>启动Docker<br>systemctl start docker<br>Docker开机自启<br>systemctl enable docker</p>
+<h1 id="在Docker中安装minio"><a href="#在Docker中安装minio" class="headerlink" title="在Docker中安装minio"></a>在Docker中安装minio</h1><ol>
+<li><p>   拉取minio    docker pull minio&#x2F;minio<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/64a8e7dff30649cb984d31d6a6a4079a.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+</li>
+<li><p>   使用Docker创建minio容器，在宿主机上创建minio数据卷并挂在到容器上<br>(没写完，回头再补上）</p>
+</li>
+</ol>
+<h1 id="在Docker中安装nginx"><a href="#在Docker中安装nginx" class="headerlink" title="在Docker中安装nginx"></a>在Docker中安装nginx</h1><ol>
+<li><p>   拉取nginx  docker pull nginx:1.23.1</p>
+</li>
+<li><p>   创建数据卷地址<br>mkdir &#x2F;data&#x2F;nginx&#x2F;conf<br>mkdir &#x2F;data&#x2F;nginx&#x2F;log<br>mkdir &#x2F;data&#x2F;nginx&#x2F;html</p>
+</li>
+<li><p>   启动nginx ，然后copy初始配置文件到新建的文件目录下<br>生成容器<br>docker run –name nginx -p 9001:80 -d nginx:1.23.1<br>将容器nginx.conf文件复制到宿主机<br>docker cp nginx:&#x2F;etc&#x2F;nginx&#x2F;nginx.conf &#x2F;data&#x2F;nginx&#x2F;conf&#x2F;nginx.conf<br> 将容器conf.d文件夹下内容复制到宿主机<br>docker cp nginx:&#x2F;etc&#x2F;nginx&#x2F;conf.d &#x2F;data&#x2F;nginx&#x2F;conf&#x2F;conf.d<br>将容器中的html文件夹复制到宿主机<br>docker cp nginx:&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html &#x2F;data&#x2F;nginx&#x2F;html</p>
+</li>
+<li><p>   删除容器<br>docker rm nginx</p>
+</li>
+<li><p>重启容器并挂载数据卷<br>docker run <br>-p 9002:80 <br>–name nginx <br>-v &#x2F;data&#x2F;nginx&#x2F;conf&#x2F;nginx.conf:&#x2F;etc&#x2F;nginx&#x2F;nginx.conf <br>-v &#x2F;data&#x2F;nginx&#x2F;conf&#x2F;conf.d:&#x2F;etc&#x2F;nginx&#x2F;conf.d <br>-v &#x2F;data&#x2F;nginx&#x2F;log:&#x2F;var&#x2F;log&#x2F;nginx <br>-v &#x2F;data&#x2F;nginx&#x2F;html:&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html <br>-d nginx:1.23.1</p>
+</li>
+<li><p>打开防火墙9002端口并测试<br> 主机IP:9002</p>
+</li>
+</ol>
+<p>未完待续…………</p>
 
             </div>
 
@@ -276,16 +321,16 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li><strong>標題:</strong> Hello World</li>
+        <li><strong>標題:</strong> Linux常用命令</li>
         <li><strong>作者:</strong> Yujie Zhang</li>
-        <li><strong>撰寫于:</strong> 2023-07-10 15:41:49</li>
+        <li><strong>撰寫于:</strong> 2023-07-11 17:02:26</li>
         
             <li>
-                <strong>更新于:</strong> 2023-07-10 15:41:49
+                <strong>更新于:</strong> 2023-07-11 17:05:57
             </li>
         
         <li>
-            <strong>連結:</strong> https://yujiezhang2022.github.io/2023/07/10/hello-world/
+            <strong>連結:</strong> https://yujiezhang2022.github.io/2023/07/11/Linux常用命令/
         </li>
         <li>
             <strong>版權宣告:</strong> 本作品采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 进行许可。
@@ -303,21 +348,21 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2023/07/11/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/07/10/hello-world/"
                             >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Linux常用命令</span>
-                                    <span class="post-nav-item">上一篇</span>
+                                    <span class="post-nav-title-item">Hello World</span>
+                                    <span class="post-nav-item">下一篇</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
                                 </span>
                             </a>
                         </div>
-                    
                     
                 </div>
             
@@ -375,8 +420,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此頁目錄</div>
-        <div class="page-title">Hello World</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <div class="page-title">Linux常用命令</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Blinux%E7%89%88%E6%9C%AC%EF%BC%9Acat-x2F-proc-x2F-version"><span class="nav-text">查看linux版本：cat &#x2F;proc&#x2F;version</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%91%BD%E4%BB%A4-wget"><span class="nav-text">下载命令 wget</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#firewall%E6%8C%87%E4%BB%A4"><span class="nav-text">firewall指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql"><span class="nav-text">Mysql:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="nav-text">Docker安装：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8Docker%E4%B8%AD%E5%AE%89%E8%A3%85minio"><span class="nav-text">在Docker中安装minio</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8Docker%E4%B8%AD%E5%AE%89%E8%A3%85nginx"><span class="nav-text">在Docker中安装nginx</span></a></li></ol>
 
     </div>
 </div>
