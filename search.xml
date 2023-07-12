@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Linux常用命令</title>
+    <url>/2023/07/11/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h3 id="查看linux版本："><a href="#查看linux版本：" class="headerlink" title="查看linux版本："></a>查看linux版本：</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/version </span><br></pre></td></tr></table></figure></div>
+
+<h3 id="下载命令-wget"><a href="#下载命令-wget" class="headerlink" title="下载命令 wget"></a>下载命令 wget</h3><h3 id="firewall指令"><a href="#firewall指令" class="headerlink" title="firewall指令"></a>firewall指令</h3><p>打开端口：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ firewall-cmd --permanent --add-port=端口号/协议</span><br></pre></td></tr></table></figure></div>
+<p>关闭端口：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ firewall-cmd --permanent --remove-port=端口号/协议</span><br></pre></td></tr></table></figure></div>
+<p>重新载入，才能生效：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ firewall-cmd --reload</span><br></pre></td></tr></table></figure></div>
+<p>查询端口是否开放：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ firewall-cmd --query-port=端口/协议</span><br></pre></td></tr></table></figure></div>
+<p>查询已经开放的端口号：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ firewall-cmd --zone=public --list-ports</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql:"></a>Mysql:</h3><p>允许远程ip访问</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ update user <span class="built_in">set</span> host=<span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user =<span class="string">&#x27;root&#x27;</span>;</span><br><span class="line">$ GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span>WITH GRANT OPTION;</span><br><span class="line">$ flush privileges;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Docker安装："><a href="#Docker安装：" class="headerlink" title="Docker安装："></a>Docker安装：</h3><p>添加依赖库</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure></div>
+<p>添加Docker源</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure></div>
+<p>安装docker以及docker-cli</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yum install docker-ce-18.09.0 docker-ce-cli-18.09.0 containerd.io</span><br></pre></td></tr></table></figure></div>
+<p>启动Docker</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure></div>
+<p>Docker开机自启</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="在Docker中安装minio"><a href="#在Docker中安装minio" class="headerlink" title="在Docker中安装minio"></a>在Docker中安装minio</h3><ol>
+<li><p>   拉取minio    </p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull minio/minio</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>   使用Docker创建minio容器，在宿主机上创建minio数据卷并挂在到容器上<br>(没写完，回头再补上）</p>
+</li>
+</ol>
+<h3 id="在Docker中安装nginx"><a href="#在Docker中安装nginx" class="headerlink" title="在Docker中安装nginx"></a>在Docker中安装nginx</h3><ol>
+<li><p>   拉取nginx  </p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull nginx:1.23.1</span><br></pre></td></tr></table></figure></div></li>
+<li><p>   创建数据卷地址</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /data/nginx/conf</span><br><span class="line"><span class="built_in">mkdir</span> /data/nginx/log</span><br><span class="line"><span class="built_in">mkdir</span> /data/nginx/html</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>   启动nginx ，然后copy初始配置文件到新建的文件目录下<br>生成容器</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name nginx -p 9001:80 -d nginx:1.23.1</span><br></pre></td></tr></table></figure></div>
+<p>将容器nginx.conf文件复制到宿主机</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> nginx:/etc/nginx/nginx.conf /data/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure></div>
+<p>将容器conf.d文件夹下内容复制到宿主机</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> nginx:/etc/nginx/conf.d /data/nginx/conf/conf.d</span><br></pre></td></tr></table></figure></div>
+<p>将容器中的html文件夹复制到宿主机</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> nginx:/usr/share/nginx/html /data/nginx/html</span><br></pre></td></tr></table></figure></div></li>
+<li><p>   删除容器</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> nginx</span><br></pre></td></tr></table></figure></div></li>
+<li><p>重启容器并挂载数据卷</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">docker run \</span><br><span class="line">-p 9002:80 \</span><br><span class="line">--name nginx \</span><br><span class="line">-v /data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \</span><br><span class="line">-v /data/nginx/conf/conf.d:/etc/nginx/conf.d \</span><br><span class="line">-v /data/nginx/log:/var/log/nginx \</span><br><span class="line">-v /data/nginx/html:/usr/share/nginx/html \</span><br><span class="line">-d nginx:1.23.1</span><br></pre></td></tr></table></figure></div></li>
+<li><p>打开防火墙9002端口并测试<br> 主机IP:9002</p>
+</li>
+</ol>
+<p>未完待续…………</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/07/10/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/07/12/README_zh-CN/</url>
+    <content><![CDATA[<div align="right">
+  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.shields.io/badge/-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-A31F34?style=for-the-badge"
+                      alt="简体中文"
+                >
+  <a title="en" href="README.md"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.shields.io/badge/-English-545759?style=for-the-badge"
+                      alt="english"
+                ></a>
+  <a title="zh-TW" href="README_zh-TW.md"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.shields.io/badge/-%E7%B9%81%E4%BD%93%E4%B8%AD%E6%96%87-545759?style=for-the-badge"
+                      alt="繁体中文"
+                ></a>
+</div>
+
+<p><a href="https://redefine.ohevan.com"><img  align="center" 
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://user-images.githubusercontent.com/68590232/226141917-68124e8f-fde0-4edd-b86d-c62932ec369a.png"
+                       alt="Redefine"
+                ></a></p>
+<h1 id="hexo-theme-redefine"><a href="#hexo-theme-redefine" class="headerlink" title="hexo-theme-redefine"></a>hexo-theme-redefine</h1><p>“Redefine” 是一个简洁、快速、纯净的 hexo 主题。简洁，但不简单。本主题包含很多广泛使用的功能，并拥有着优秀的设计。</p>
+<p>本主题基于 <a class="link"   href="https://github.com/XPoet/hexo-theme-keep" >hexo-theme-keep <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 开发，感谢 XPoet 的开源。本主题主要优化了样式，增加了写作模块，以及各种插件的支持。同时加大自定义程度，让你可以更加方便的使用本主题。</p>
+<p align="center">
+    <a href="https://www.npmjs.com/package/hexo-theme-redefine">
+        <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.shields.io/npm/v/hexo-theme-redefine?color=F38181&amp;label=version&amp;logo=npm&amp;logoColor=F38181&amp;style=for-the-badge"
+                      referrerpolicy="no-referrer" alt="NPM version" 
+                >
+    </a>
+    <a href="https://www.npmjs.com/package/hexo-theme-redefine">
+        <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.shields.io/npm/dw/hexo-theme-redefine?color=FCE38A&amp;logo=npm&amp;logoColor=FCE38A&amp;style=for-the-badge"
+                      referrerpolicy="no-referrer" alt="npm downloads" 
+                >
+    </a>
+    <a href="https://www.npmjs.com/package/hexo-theme-redefine">
+        <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.shields.io/npm/dt/hexo-theme-redefine?color=95E1D3&amp;label=total&amp;logo=npm&amp;logoColor=95E1D3&amp;style=for-the-badge"
+                      referrerpolicy="no-referrer" alt="npm-total" 
+                >
+    </a>
+    <a href="https://hexo.io"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.shields.io/badge/hexo-%3E=5.0.0-8caaee?style=for-the-badge&amp;logo=hexo&amp;logoColor=8caaee"
+                      referrerpolicy="no-referrer" alt="Required Hexo version" 
+                ></a>
+    <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.shields.io/badge/node-%3E=12.0-a6d189?style=for-the-badge&amp;logo=node.js&amp;logoColor=a6d189"
+                      referrerpolicy="no-referrer" alt="NodeJS Version" 
+                >
+</p>
+
+
+<h2 id="📷-屏幕截图"><a href="#📷-屏幕截图" class="headerlink" title="📷 屏幕截图"></a>📷 屏幕截图</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/1c4f802b-b949-4313-8935-6ea5178be9e3"
+                      alt="redefine-1-final"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/bf6529a6-bce9-4388-899c-1d96325c49d6"
+                      alt="redefine-2-final"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/33ee3d7c-189c-4b75-89c9-914b0cb63caf"
+                      alt="redefine-3-final"
+                ></p>
+<h2 id="🌐-官方演示站"><a href="#🌐-官方演示站" class="headerlink" title="🌐 官方演示站"></a>🌐 官方演示站</h2><ul>
+<li><a class="link"   href="https://ohevan.com/" >EvanNotFound’s Blog <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://redefine.ohevan.com/" >Theme Redefine 演示站点 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://redefine.ohevan.com/showcase" >Redefine 用户墙 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<p>如果你也在使用 Redefine，欢迎在前往 <a class="link"   href="https://redefine.ohevan.com/showcase" >Redefine 用户墙 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 添加你的博客链接。</p>
+<h2 id="⛰️-部分功能"><a href="#⛰️-部分功能" class="headerlink" title="⛰️ 部分功能"></a>⛰️ 部分功能</h2><ul>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/modules/notes" >笔记模块 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/page_templates/friends" >友链样式 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/plugins/mathjax" >数学公式 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>代码块语言显示</li>
+<li>Light&#x2F;Dark 模式切换</li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/basic/fontawesome" >Font Awesome 6.2.1 Pro <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>（包含 Duotone&#x2F;Regular&#x2F;Thin 等不同样式）</li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/dhome/navbar#%E9%93%BE%E6%8E%A5%E5%88%97%E8%A1%A8" >下拉菜单 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/footer" >可自定义页脚 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/footer#%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4" >网站运行时间显示 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/article_customize/banner" >文章头图 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/plugins/mermaid" >Mermaid JS 支持 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>SEO 友好</li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/plugins/aplayer" >Aplayer 音乐播放器支持 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/shuoshuo" >说说模块 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://redefine-docs.ohevan.com/basic/global#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93" >自定义字体 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h2 id="☁️-安装"><a href="#☁️-安装" class="headerlink" title="☁️ 安装"></a>☁️ 安装</h2><p>如果你的 Hexo 版本在 <code>5.0</code> 及以上，推荐通过 <code>npm</code> 安装</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> your-hexo-site</span><br><span class="line">$ npm install hexo-theme-redefine@latest</span><br></pre></td></tr></table></figure></div>
+
+<p>或者使用 git 克隆</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> your-hexo-site</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine</span><br></pre></td></tr></table></figure></div>
+
+<p>安装完成后，在 Hexo 配置文件 <code>_config.yml</code> 中将 <code>theme</code> 设置为 <code>Redefine</code>。</p>
+<div class="highlight-container" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">redefine</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="⏫-更新"><a href="#⏫-更新" class="headerlink" title="⏫ 更新"></a>⏫ 更新</h2><p>Theme Redefine 经常发布新版本，你可以通过如下命令更新 Theme Redefine。</p>
+<p>通过 <code>npm</code> 安装最新版本：</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-theme-redefine@latest</span><br></pre></td></tr></table></figure></div>
+
+<p>通过 <code>git</code> 更新到最新的 <code>main</code> 分支：</p>
+<div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="📄-文档"><a href="#📄-文档" class="headerlink" title="📄 文档"></a>📄 文档</h2><p>请阅读 <a class="link"   href="https://redefine-docs.ohevan.com/" >Redefine 主题官方文档 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 进行主题配置与安装，非常简单易懂。</p>
+<h2 id="☕-支持"><a href="#☕-支持" class="headerlink" title="☕ 支持"></a>☕ 支持</h2><p>欢迎 <strong>pull request</strong> 或者 提交 <strong>issues</strong>.</p>
+<p>如有问题，请发邮件到 <a class="link"   href="mailto:contact@ohevan.com" >contact@ohevan.com <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>. 我会及时回复</p>
+<p>如果你觉得主题还不错的话，欢迎给我 Github 点个 Star，谢谢。建议点个 Watch，以便及时获取主题更新。</p>
+<p>如果你在使用 <a class="link"   href="https://typora.io/" >Typora <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 编辑器写文章，欢迎查看我写的 <a class="link"   href="https://github.com/EvanNotFound/typora-theme-redefine" >Typora Redefine 主题 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，按照本 Hexo 主题样式编写，让你可以直接预览文章效果，更好排版。</p>
+<h2 id="💗-赞助"><a href="#💗-赞助" class="headerlink" title="💗 赞助"></a>💗 赞助</h2><p>非常感谢所有赞助者的支持，你们的支持是我维护这个项目的动力。</p>
+<p>如果你觉得这个项目还不错，欢迎给我买杯咖啡，给 CDN 续命续久一点，感谢</p>
+<p>所有赞助者名单：<a class="link"   href="https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md" >赞助者名单 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>再次感谢你们！</p>
+<h2 id="🌟-Star-记录"><a href="#🌟-Star-记录" class="headerlink" title="🌟 Star 记录"></a>🌟 Star 记录</h2><p><a href="https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date"
+                      alt="Star History Chart"
+                ></a></p>
+<h2 id="📢-其他"><a href="#📢-其他" class="headerlink" title="📢 其他"></a>📢 其他</h2><p>如果你恰好需要云主机，可以去 <a class="link"   href="https://my.racknerd.com/aff.php?aff=8346" >Racknerd <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 看看，性价比高。</p>
+<p>很多活动，比如 2核 2G 活动价一年只要 20 刀，比国内云便宜而且还没有监管，可以用来部署各种服务。</p>
+]]></content>
+  </entry>
+</search>
